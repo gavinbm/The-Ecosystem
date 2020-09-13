@@ -1,0 +1,37 @@
+<html>
+  <script>
+    function rpsGame() {
+      let cChoice = Math.floor(Math.random() * 4) + 1;
+      let pChoice = prompt("Choose your Weapon\n(1) Rock\n(2) Paper\n(3) Scissors");
+
+      if(cChoice == pChoice) {
+        alert("Tie Game!");
+      }
+      else if(cChoice == 1 && cChoice != pChoice) {
+        if(pChoice == 2) {
+          alert("Paper beats Rock! You Win!");
+        }
+        else if(pChoice == 3) {
+          alert("Rock beats Scissors! Computer Wins!");
+        }
+      }
+      else if(cChoice == 2 && cChoice != pChoice) {
+        if(pChoice == 1) {
+          alert("Paper beats Rock! Computer Wins!");
+        }
+        else if(pChoice == 3) {
+          alert("Scissors beats Paper! You Win!");
+        }
+      }
+      else if(cChoice == 3 && cChoice != pChoice) {
+        if(pChoice == 1) {
+          alert("Rock beats Scissors! You Win!");
+        }
+        else if(pChoice == 2) {
+          alert("Scissors beats Paper! Computer Wins!");
+        }
+      }
+    }
+  </script>
+  <button type="button" id="start" onclick="rpsGame()">Start Game!</button>
+</html>
