@@ -6,8 +6,8 @@
     <title>{% block title %}The Ecosystem{% endblock %}</title>
 </head>
   <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">Welcome Home</a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Welcome Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
       data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -27,10 +27,8 @@
         </ul>
       </div>
     </nav>
-    <h1>{% block welcome %}{% endblock %}</h1>
-    <p>{% block stuff %}{% endblock %}</p>
-    <h2>{% block loginhead %}{% endblock %}</h2>
-    <form action="#", method="post">{% block form %}{% endblock %}</form>
+    {% block welcome %}{% endblock %}
+    {% block content %}{% endblock %}
 
 
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

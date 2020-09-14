@@ -1,8 +1,25 @@
-<html>
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+      <p>{{msg}}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
   <script>
-    function rpsGame() {
+    const selectionButtons = document.querySelectorAll('[data-selection]');
+    selectionsButtons.forEach(selectionButton => {
+      selectionButton.addEventListener('click', e => {
+        const selectionName = selection.dataset.selection;
+        rpsGame(selectionName);
+      })
+    })
+    function rpsGame(pChoice) {
       let cChoice = Math.floor(Math.random() * 4) + 1;
-      let pChoice = prompt("Choose your Weapon\n(1) Rock\n(2) Paper\n(3) Scissors");
 
       if(cChoice == pChoice) {
         alert("Tie Game!");
@@ -33,6 +50,7 @@
       }
     }
   </script>
-  
-  <button type="button" id="start" onclick="rpsGame()">Start Game!</button>
-</html>
+  <button class="choice" data-choice="1"><img src="rock.png"></button>
+  <button class="choice" data-choice="2"><img src="paper.png"></button>
+  <button class="choice" data-choice="3"><img src="scissors.png"></button>
+{% endblock %}

@@ -2,19 +2,11 @@
 {% block title %}The Ecosystem{% endblock %}
     {% block welcome %}
     <h1>
-      Welcome to the Ecosystem :D
+      Join The Ecosystem Today!
     </h1>
     {% endblock %}
 
-    {% block stuff %}
-    <p>
-      You've stumbled upon my fine corner of the internet, please make yourself at home!
-      Why don't you go ahead and sign up! There's free games that I've made (poorly) inside!
-    </p>
-    {% endblock %}
-
-    {% block loginhead %}Join Today!{% endblock %}
-    {% block form %}
+    {% block content %}
       {% with messages = get_flashed_messages() %}
         {% if messages %}
           {% for msg in messages %}
@@ -22,9 +14,9 @@
           {% endfor %}
         {% endif %}
       {% endwith %}
-    <form action="#", method="post">
+      <form action="#", method="post">
       <p> Name: <input type="text" name="nm" /></p>
-      <p> Password: <input type="text" name="pw" /></p>
+      <p> Password: <input type="password" name="pw" /></p>
       <p><input type="submit" value="Login" /></p>
       </form>
     {% endblock %}
