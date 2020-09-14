@@ -1,11 +1,22 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
-import sqlalchemy
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = "howdy"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-with open("accounts.json") as f:
-    Users = json.load(f)
+db = SQLAlchemy(app)
+
+class users(db.Model):
+    _id = db.Column("id", db.Integer, primary_key = True)
+    name = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+
+    def __init__(self, name, password):
+        self.name = name
+        self.password = password
+
 
 # Special chars for passwords
 Specials = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-']
@@ -20,26 +31,3 @@ def check_password(Specials, password):
         return False
     else:
         return True
-
-# Checks if a username already exists
-def check_username(Users, name):
-    check = True
-    for user in Users:
-        if user["name"] == name:
-            check = False
-    return check
-
-# Finds a user
-def find_user(Users, name, password):
-    check = False
-    for user in Users:
-        if user["name"] == name and user["password"] == password:
-            check = True
-    return check
-
-# Creates a user
-def create_user(name, password):
-    user = {'name':name, 'password':password, 'games':[]}
-    Users.append(user)
-    with open("accounts.txt", "w") as fout:
-            json.dump(Users, fout)

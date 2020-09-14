@@ -6,14 +6,19 @@ def home():
     if request.method == "POST":
         name = request.form["nm"]
         password = request.form["pw"]
-        if find_user(Users, name, password):
-            session["user"] = name
+        session["user"] = name
+        found_user = users.query.filter_by(name = name).first()
+        if found_user:
             return redirect(url_for("games"))
         else:
-            if check_username(Users, name) and check_password(Specials, password):
-                create_user(name, password)
+            if check_password(Specials, password):
+                usr = users(name, "")
+                db.session.add(usr)
+                db.session.commit()
+                return redirect(url_for("games"))
             else:
-                return render_template("index.html")
+                error = "Invalid username or password, please try again"
+                return render_template("index.html", error=error)
     else:
         return render_template("index.html")
 
@@ -25,4 +30,5 @@ def games():
     return render_template("games.html")
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)
