@@ -1,3 +1,5 @@
+<html>
+<body>
 {% extends "base.html" %}
 
 {% block content %}
@@ -10,48 +12,15 @@
   {% endif %}
 {% endwith %}
 
+<canvas id="board" width="400" height="400"></canvas>
   <script>
-    const selectionButtons = document.querySelectorAll('[data-selection]');
-    selectionsButtons.forEach(selectionButton => {
-      selectionButton.addEventListener('click', e => {
-        const selectionName = selection.dataset.selection;
-        rpsGame(selectionName);
-      })
-    })
-    function rpsGame(pChoice) {
-      let cChoice = Math.floor(Math.random() * 4) + 1;
-
-      if(cChoice == pChoice) {
-        alert("Tie Game!");
-      }
-      else if(cChoice == 1 && cChoice != pChoice) {
-        if(pChoice == 2) {
-          alert("Paper beats Rock! You Win!");
-        }
-        else if(pChoice == 3) {
-          alert("Rock beats Scissors! Computer Wins!");
-        }
-      }
-      else if(cChoice == 2 && cChoice != pChoice) {
-        if(pChoice == 1) {
-          alert("Paper beats Rock! Computer Wins!");
-        }
-        else if(pChoice == 3) {
-          alert("Scissors beats Paper! You Win!");
-        }
-      }
-      else if(cChoice == 3 && cChoice != pChoice) {
-        if(pChoice == 1) {
-          alert("Rock beats Scissors! You Win!");
-        }
-        else if(pChoice == 2) {
-          alert("Scissors beats Paper! Computer Wins!");
-        }
-      }
-    }
+    var canvas = document.getElementById("board");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, 200, 200);
   </script>
-  <button class="choice" data-choice="1"><img src="images\rock.png" width="100" height="100"></button>
-  <button class="choice" data-choice="2"><img src="images\paper.png" width="100" height="100"></button>
-  <button class="choice" data-choice="3"><img src="images\scissors.png" width="100" height="100"></button>
+
 
 {% endblock %}
+</body>
+</html>
