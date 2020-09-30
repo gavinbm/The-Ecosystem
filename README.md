@@ -1,5 +1,5 @@
-0.1
+Welcome to The Ecosystem!
 ===================================
-an extension of my other project "ecomanage", hopefully I'll be able
-to apply that project to this one and prove to my mom that I am indeed
-worthy of having my 2nd grade yearbook picture on the fridge
+Howdy! Welcome to my little corner of GitHub!
+This is a website I've been working on since May 2020 as a way to refresh my skills in HTML, CSS, and JS while also learning some new stuff with Python and SQL
+Hopefully you enjoy looking over my work, and contact me with any suggestions or notes!
