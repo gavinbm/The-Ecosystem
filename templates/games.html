@@ -14,10 +14,79 @@
 
 <canvas id="board" width="400" height="400"></canvas>
   <script>
-    var canvas = document.getElementById("board");
-    var ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(0, 0, 200, 200);
+  window.onload = function() {
+    canvas = document.getElementById("board");
+    ctx = canvas.getContext("2d");
+    document.addEventListener("keydown", keyPush);
+    setInterval(snake, 1000/15);
+  }
+  playerX = 10;
+  playerY = 10;
+  gridSize = 20;
+  tileCount = 20;
+  appleX = 0;
+  appleY = 0;
+  xVel = 0;
+  yVel = 0;
+  trail = [];
+  tail = 5;
+  function snake() {
+    playerX += xVel;
+    playerY += yVel;
+    if( playerX < 0) {
+      playerX = tileCount - 1;
+    }
+    if(playerX > tileCount - 1) {
+      playerX = 0;
+    }
+    if(playerY > tileCount - 1) {
+      playerY = 0;
+    }
+    if(playerY < 0) {
+      playerY = tileCount -1;
+    }
+
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(appleX*gridSize,appleY*gridSize,gridSize-2,gridSize-2);
+
+    ctx.fillStyle = "lime";
+    for(var i = 0; i < trail.length; i++) {
+      ctx.fillRect(trail[i].x*gridSize,trail[i].x*gridSize,gridSize-2,gridSize-2);
+
+      if(trail[i].x == playerX && trail[i].y == playerY) {
+        tail = 5;
+      }
+    }
+    trail.push({x:playerX,y:playerY});
+    while(trail.length > tail) {
+      trail.shift();
+    }
+
+    if(appleX == playerX && appleY == playerY) {
+      tail++;
+      appleX = Math.floor(Math.random()*tileCount);
+      appleY = Math.floor(Math.random()*tileCount);
+    }
+  }
+  function keyPush() {
+    switch(evt.keyCode) {
+      case 37:
+        xVel = -1;
+        yVel = 0;
+      case 38:
+        xVel = 0;
+        yVel = -1;
+      case 39:
+        xVel = 1;
+        yVel = 0;
+      case 40:
+        xVel = 0;
+        yVel = 1;
+    }
+  }
   </script>
 
 

@@ -1,12 +1,8 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
-from settings import *
-from flask_flatpages import FlatPages
-from flask_frozen import Freezer
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = "howdy"
-app.config.from_pyfile('settings.put')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
