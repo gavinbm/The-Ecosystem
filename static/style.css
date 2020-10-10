@@ -1,10 +1,15 @@
 
-canvas {
-  margin-left: 10px;
+body {
+  color: #373D4E;
+  background: #121212;
 }
 
 h1 {
-  color: #FFFFFF;
+  color: #DBE0EF;
   margin-left: auto;
-  background-color: #3B4668;
+  background-color: #101010;
+}
+
+p {
+  color: #DBE0EF;
 }
