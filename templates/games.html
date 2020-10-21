@@ -1,11 +1,6 @@
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-</head>
-
-<body>
+<html>
 {% extends "base.html" %}
-
+<body>
 {% block content %}
 
 {% with messages = get_flashed_messages() %}
@@ -16,8 +11,7 @@
   {% endif %}
 {% endwith %}
 
-<canvas id="board" width="400" height="400"></canvas>
-<script type="text/javascript" src="/snake.js"></script>
+<canvas id="board" width="400" height="400" ></canvas>
 
 {% endblock %}
 </body>
