@@ -1,22 +1,23 @@
-from webApp import app
+#from webApp import app
 from helpers import *
 
 @app.route("/", methods = ["POST", "GET"])
 def home():
-    render_template("index.html")
     if request.method == "POST":
         name = request.form["nm"]
         password = request.form["pw"]
         session["user"] = name
         found_user = users.query.filter_by(name = name).first()
         if found_user:
-            return redirect(url_for("games"))
+            flash(f"Return to the Ecosystem {found_user.name}!")
+            return render_template("index.html")
         else:
             if check_password(Specials, password):
-                usr = users(name, "")
+                usr = users(name, password)
                 db.session.add(usr)
                 db.session.commit()
-                return redirect(url_for("games"))
+                flash(f"Welcome to the Ecyosystem {name}!")
+                return render_template("index.html")
             else:
                 error = "Invalid username or password, please try again"
                 return render_template("index.html", error=error)
@@ -29,6 +30,13 @@ def games():
         user = session["user"]
         flash(f"Welcome Back {user} :D")
     return render_template("games.html")
+
+@app.route("/class", methods=["POST", "GET"])
+def classStuff():
+    if "user" in session:
+        user = session["user"]
+        flash(f"Hey there {user} :D")
+    return render_template("class.html")
 
 if __name__ == "__main__":
     db.create_all()

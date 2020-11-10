@@ -1,0 +1,17 @@
+<html>
+{% extends "base.html" %}
+  <body>
+    {% block content %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <p>{{msg}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <img src="https://diveintosystems.org/antora/diveintosystems/1.0/ARM64/_images/recursion.png">
+    {% endblock %}
+  </body>
+</html>
