@@ -6,11 +6,15 @@
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for msg in messages %}
-          <p>{{msg}}</p>
+          <h2>{{msg}}</h2>
         {% endfor %}
       {% endif %}
     {% endwith %}
 
+    <p>This is an animation that shows how recursive procedure calls affect the stack in ARMv8 assembly (or any other language really)</p>
+    <p>It took me a bit to understand exactly how to make procedures work, but with some practice they're not too bad</p>
+    <p>This animation is a bit "flawed" at least with perspective of my classe since we don't use registers labeled with a 'w'</p>
+    <p>like "w0" since those only contain the bottom 32 bits of the register. Instead we use registers like x0 in my class</p>
     <img src="https://diveintosystems.org/antora/diveintosystems/1.0/ARM64/_images/recursion.png">
     {% endblock %}
   </body>

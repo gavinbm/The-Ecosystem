@@ -1,13 +1,9 @@
-var canvas = document.getElementById("board");
-var ctx = canvas.getContext("2d");
-canvas.addEventListener("keypress", move)
-ctx.fillStyle = "black";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-px=py=20;
-ax=ay=15;
-xVel=yVel=0;
-
+window.onload = function() {
+  var canvas = document.getElementById("board");
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "blue";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
 
 
 function move(e) {
