@@ -40,9 +40,16 @@ def classStuff():
 
 @app.route("/news", methods=["POST", "GET"])
 def news():
-    msg = Message('Support Ticket', sender = '[EMAIL HERE]', recipients = ['RECIPIENT HERE'])
-    msg.body = "Hello Flask message sent from Flask-Mail"
-    mail.send(msg)
+    recipients = ["ecosystemnewsletter@gmail.com"]
+    if request.method == "POST":
+        #if request.form["userMail"] != "":
+            #recipients.append(request.form["userMail"])
+        if request.form["fullSend"] == "Send":
+            msg = Message('Ecosystem Fun Fact!', sender = 'ecosystemnewsletter@gmail.com', recipients = recipients)
+            msg.body = "Did you know that George Washington's teeth weren't wooden? They were made out of ivory, human teeth, and metal!"
+            mail.send(msg)
+            flash("Message sent!")
+            return "sent"
     return render_template("news.html")
 
 if __name__ == "__main__":

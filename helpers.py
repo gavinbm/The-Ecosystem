@@ -1,5 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail, Message
+
 #from webApp import app
 app = Flask(__name__)
 app.secret_key = "howdy"
@@ -12,8 +14,8 @@ mail= Mail(app)
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = '[EMAIL HERE]'
-app.config['MAIL_PASSWORD'] = '[PASSWORD HERE]'
+app.config['MAIL_USERNAME'] = 'ecosystemnewsletter@gmail.com'
+app.config['MAIL_PASSWORD'] = '@PYp$=;NnZc;689:'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 

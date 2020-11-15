@@ -13,10 +13,11 @@
 
     <p> This is a test of flask-mail just to prove it works, all this will do is send</p>
     <p> an email to the address provided, if none is provided it'll send one to my personal email just</p>
-    <p> to prove to me that it works </p>
+    <p> to prove to me that it works. I promise, it doesn't actually get saved anywhere, I don't want </p>
+    <p> anyone else's email, I just wanna prove to employers that I can do some stuff with python </p>
 
     <input type="email" name="userMail" placeholder="your email here...">
-    <input type="button" name="fullSend" value="Send">
+    <button name="fullSend" value="Send" method="POST">Send</button>
     {% endblock %}
   </body>
 </html>
