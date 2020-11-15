@@ -8,6 +8,17 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+mail= Mail(app)
+
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = '[EMAIL HERE]'
+app.config['MAIL_PASSWORD'] = '[PASSWORD HERE]'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key = True)
     name = db.Column(db.String(100))

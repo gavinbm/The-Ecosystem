@@ -38,6 +38,13 @@ def classStuff():
         flash(f"Hey there {user} :D")
     return render_template("class.html")
 
+@app.route("/news", methods=["POST", "GET"])
+def news():
+    msg = Message('Support Ticket', sender = '[EMAIL HERE]', recipients = ['RECIPIENT HERE'])
+    msg.body = "Hello Flask message sent from Flask-Mail"
+    mail.send(msg)
+    return render_template("news.html")
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)

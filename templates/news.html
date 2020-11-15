@@ -1,0 +1,22 @@
+<html>
+{% extends "base.html" %}
+  <body>
+    {% block content %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <h2>{{msg}}</h2>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <p> This is a test of flask-mail just to prove it works, all this will do is send</p>
+    <p> an email to the address provided, if none is provided it'll send one to my personal email just</p>
+    <p> to prove to me that it works </p>
+
+    <input type="email" name="userMail" placeholder="your email here...">
+    <input type="button" name="fullSend" value="Send">
+    {% endblock %}
+  </body>
+</html>
