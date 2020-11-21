@@ -21,8 +21,9 @@ Account system - Finished 9/14/2020
   - Enforces password security standards
 
 Games - WiP as of 10/5/2020
-  - Snake in JavaScript (WiP)
-  - More to come once Snake is finished!
+  - Battleship in Python, right now it's just a simple terminal
+  - Game itself is functional, barring some edge cases (1/16 chance enemy ship is on top of players)
+  - Need to implement into site
   
 Email - WiP as of 11/15/2020
   - Sends email from a static email address to
