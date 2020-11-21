@@ -1,5 +1,9 @@
-#from webApp import app
 from helpers import *
+
+app = Flask(__name__)
+app.secret_key = "howdy"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 @app.route("/", methods = ["POST", "GET"])
 def home():
@@ -40,12 +44,12 @@ def classStuff():
 
 @app.route("/news", methods=["POST", "GET"])
 def news():
-    recipients = ["ecosystemnewsletter@gmail.com"]
+    sendTo = ["ecosystemnewsletter@gmail.com"]
     if request.method == "POST":
         #if request.form["userMail"] != "":
             #recipients.append(request.form["userMail"])
         if request.form["fullSend"] == "Send":
-            msg = Message('Ecosystem Fun Fact!', sender = 'ecosystemnewsletter@gmail.com', recipients = recipients)
+            msg = Message('Ecosystem Fun Fact!', sender = 'ecosystemnewsletter@gmail.com', recipients = sendTo)
             msg.body = "Did you know that George Washington's teeth weren't wooden? They were made out of ivory, human teeth, and metal!"
             mail.send(msg)
             flash("Message sent!")
