@@ -2,16 +2,9 @@ from flask import Flask, redirect, url_for, render_template, request, session, f
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 
+from eco import app
+
 db = SQLAlchemy(app)
-
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'ecosystemnewsletter@gmail.com'
-app.config['MAIL_PASSWORD'] = '@PYp$=;NnZc;689:'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-
-mail = Mail(app)
 
 class users(db.Model):
     _id = db.Column("id", db.Integer, primary_key = True)

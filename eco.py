@@ -5,6 +5,15 @@ app.secret_key = "howdy"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'ecosystemnewsletter@gmail.com'
+app.config['MAIL_PASSWORD'] = '@PYp$=;NnZc;689:'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+
 @app.route("/", methods = ["POST", "GET"])
 def home():
     if request.method == "POST":
@@ -46,14 +55,14 @@ def classStuff():
 def news():
     sendTo = ["ecosystemnewsletter@gmail.com"]
     if request.method == "POST":
-        #if request.form["userMail"] != "":
-            #recipients.append(request.form["userMail"])
+        if request.form["userMail"] != "":
+            sendTo.append(request.form["userMail"])
         if request.form["fullSend"] == "Send":
             msg = Message('Ecosystem Fun Fact!', sender = 'ecosystemnewsletter@gmail.com', recipients = sendTo)
             msg.body = "Did you know that George Washington's teeth weren't wooden? They were made out of ivory, human teeth, and metal!"
             mail.send(msg)
             flash("Message sent!")
-            return "sent"
+            return render_template("news.html")
     return render_template("news.html")
 
 if __name__ == "__main__":

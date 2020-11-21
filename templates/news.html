@@ -16,8 +16,10 @@
     <p> to prove to me that it works. I promise, it doesn't actually get saved anywhere, I don't want </p>
     <p> anyone else's email, I just wanna prove to employers that I can do some stuff with python </p>
 
-    <input type="email" name="userMail" placeholder="your email here...">
-    <button name="fullSend" value="Send" method="POST">Send</button>
+    <form method="post">
+      <input type="email" name="userMail" placeholder="your email here...">
+      <input type="submit" name="fullSend" value="Send">
+    </form>
     {% endblock %}
   </body>
 </html>
