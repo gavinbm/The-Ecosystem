@@ -10,10 +10,7 @@ Deployment/Hosting - Projected finished in January
     to remove it to use that server for my job as this
     projet was originally just used as a testing ground for
     features that we wanted to add to that site
-  - I plan on hosting this on a Raspberry Pi once my
-    residence is more permanent and I get a new Pi
-  - I know how to do it with Apache2, but I think
-    I'll give Nginx a try since it's more modern
+  - Apache's request handling is a dumpster fire so Nginx it is
 
 Account system - Finished 9/14/2020
   - Stores user data in a SQLite database
