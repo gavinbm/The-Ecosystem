@@ -9,7 +9,7 @@ Deployment/Hosting - Projected finished in January
   - This was hosted on a Linode server but I had
     to remove it to use that server for my job as this
     projet was originally just used as a testing ground for
-    features that we wanted to add to that site
+    features we were working on
   - Apache's request handling is a dumpster fire so Nginx it is
 
 Account system - Finished 9/14/2020
