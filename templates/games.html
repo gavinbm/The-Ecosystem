@@ -13,6 +13,13 @@
 {% endblock %}
 
 {% block content %}
+<p>This is a flask implementation of Battleship. This was originally written to be played in a terminal/shell.</p>
+<p>Currently assumes good input so please follow the instructions to not break it.</p>
+<p>INSTRUCTIONS:</p>
+<p>1) Use the top input boxes to place your ship, the computer will place theirs automatically</p>
+<p>2) Use the bottom input boxes to fire at places on the grid, only use 0-3 for x and y values, anything else will be out of bounds</p>
+<p>3) You'll have to leave the page to reset the grid, just refreshing doesn't work. Enjoy!</p>
+
 <form method="post">
   <input name="placeX" placeholder="x coord">
   <input name="placeY" placeholder="y coord">
