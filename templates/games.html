@@ -1,10 +1,7 @@
 <html>
 {% extends "base.html" %}
-<head>
-<script src="snake"></script>
-</head>
-<body>
-{% block welcome %}
+  <body>
+    {% block welcome %}
 
 {% with messages = get_flashed_messages() %}
   {% if messages %}
@@ -16,10 +13,28 @@
 {% endblock %}
 
 {% block content %}
- <canvas id="board" width="400" height="400" ></canvas>
- <br>
- <input type="button" value="start"></input>
+<form method="post">
+  <input name="placeX" placeholder="x coord">
+  <input name="placeY" placeholder="y coord">
+  <input type="submit" value="Place Ship">
+</form>
+
+<table>
+{% for row in board %}
+<tr>
+  {% for slot in row %}
+  <td>{{slot}}</td>
+  {% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+<form action="/gameLogic" method="post">
+  <input name="xin" placeholder="x coord">
+  <input name="yin" placeholder="y coord">
+  <input type="submit" value="Fire">
+</form>
+
 {% endblock %}
-<script src="snake"></script>
 </body>
 </html>

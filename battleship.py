@@ -1,3 +1,4 @@
+from flask import *
 import random
 
 PLAYING = True
@@ -13,7 +14,7 @@ class Ship():
 # 4x4 grid of "O" chars
 def makeBoard():
     board = [["O" for i in range(4)] for k in range(4)]
-    
+
     for i in range(4):
         board[i] = ["O"] * 4 # Prevents aliasing
     return board
@@ -23,7 +24,7 @@ def printBoard(board):
     for k in range(4):
         print(f"\t{k}", end="", flush=True)
     print("\n")
-    
+
     for i in range(4):
         print(i, end="\t")
         print("\t".join(board[i]))
@@ -33,15 +34,11 @@ def randShip():
     return Ship((random.randint(0, 3), random.randint(0, 3)), True)
 
 # Allows the player to place a ship at the start of a game
-def placeShip(board):
-    place = tuple(map(int, input("x, y coords: ").split(' ')))
-    if place[0] > 3 or place[0] < 0 or place[1] > 3 or place[1] < 0:
-        print("Invalid coords")
-        place = tuple(map(int, input("x, y coords: ").split(' ')))
-    else:
-        board[place[1]][place[0]] = "P"
+def placeShip(board, x, y):
+    place = (x, y)
+    board[place[1]][place[0]] = "P"
     return Ship(place, True)
-        
+
 # If you win, the game ends and you get a fun message
 def win():
     global PLAYING
@@ -60,11 +57,11 @@ def procMove(board, enemy):
     target = tuple(map(int, input("x, y coords: ").split(' ')))
     x = target[0]
     y = target[1]
-    
+
     if x > 3 or x < 0 or y > 3 or y < 0:
         print("Invalid input, please try again\n")
         target = tuple(map(int, input("x, y coords: ").split(' ')))
-        
+
     if enemy.pos[0] == x and enemy.pos[1] == y:
         board[y][x] = "X"
         print("Hit!")
@@ -87,14 +84,11 @@ def compMove(board, player, self):
                 check = False
     if player.pos[0] == x and player.pos[1] == y:
         board[y][x] = "X"
-        print("Comp Hit!")
-        printBoard(board)
-        lose()
+        flash("Comp Hit! You lose")
     else:
         board[y][x] = "M"
-        print("Comp Miss!")
-        printBoard(board)
-        
+        flash("Comp Miss!")
+
 # Driver code
 def main():
     global PLAYING

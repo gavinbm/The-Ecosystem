@@ -1,20 +1,6 @@
-from flask import Flask, redirect, url_for, render_template, request, session, flash
-from flask_sqlalchemy import SQLAlchemy
-from flask_mail import Mail, Message
-
-from eco import app
-
-db = SQLAlchemy(app)
-
-class users(db.Model):
-    _id = db.Column("id", db.Integer, primary_key = True)
-    name = db.Column(db.String(100))
-    password = db.Column(db.String(100))
-
-    def __init__(self, name, password):
-        self.name = name
-        self.password = password
-
+from flask import *
+from flask_sqlalchemy import *
+from flask_mail import *
 
 # Special chars for passwords
 Specials = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-']
