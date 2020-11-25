@@ -14,7 +14,7 @@ class Ship():
 def makeBoard():
     board = [["O" for i in range(4)] for k in range(4)]
     
-    for i in range(4):       #
+    for i in range(4):
         board[i] = ["O"] * 4 # Prevents aliasing
     return board
 
@@ -32,6 +32,7 @@ def printBoard(board):
 def randShip():
     return Ship((random.randint(0, 3), random.randint(0, 3)), True)
 
+# Allows the player to place a ship at the start of a game
 def placeShip(board):
     place = tuple(map(int, input("x, y coords: ").split(' ')))
     if place[0] > 3 or place[0] < 0 or place[1] > 3 or place[1] < 0:
@@ -50,7 +51,7 @@ def win():
 def lose():
     global PLAYING
     print("You Lose!")
-    PlAYING = False
+    PLAYING = False
 
 # Actual game logic:
 # Gets move from player, puts it into a tuple, and checks for a hit or miss
@@ -67,19 +68,26 @@ def procMove(board, enemy):
     if enemy.pos[0] == x and enemy.pos[1] == y:
         board[y][x] = "X"
         print("Hit!")
-        printBoard(board)
         win()
     else:
         board[y][x] = "M"
         print("Miss!")
-        printBoard(board)
 
-def compMove(board, player):
+# Computer will guess random coordinates from the board and update board for hit or miss
+# Takes as input the board, the player ship, and the computer ship
+def compMove(board, player, self):
     x = random.randint(0, 3)
     y = random.randint(0, 3)
     if player.pos[0] == x and player.pos[1] == y:
+        check = True
+        while check:
+            x = random.randint(0, 3)
+            y = random.randint(0, 3)
+            if player.pos[0] != x or player.pos[1] != y:
+                check = False
+    if player.pos[0] == x and player.pos[1] == y:
         board[y][x] = "X"
-        print("Hit!")
+        print("Comp Hit!")
         printBoard(board)
         lose()
     else:
@@ -96,7 +104,7 @@ def main():
     printBoard(board)
     while(PLAYING):
         procMove(board, enemy)
-        compMove(board, player)
+        compMove(board, player, enemy)
 
 if __name__ == "__main__":
     main()
