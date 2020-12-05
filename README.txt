@@ -23,6 +23,11 @@ Games - Finished as of 11/25/2020
   - Player can place ship and fire upon specific points on the grid
   - Currently assumes good input and doesn't check for outliers
 
+Class Info - On-going...
+  - Includes things that I've found interesting from my classes
+  - Currently just a diagram of how recursive function calls affect the stack
+  - Will upload my essay written to help new comp sci students (received an A-)
+  
 Email - WiP as of 11/15/2020
   - Sends email from a static email address to
     given by the user (WiP)
